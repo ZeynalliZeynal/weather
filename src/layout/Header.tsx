@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import { useState } from "react";
 import { CiGrid41 } from "react-icons/ci";
 import { GoBell } from "react-icons/go";
 import { IoIosSunny } from "react-icons/io";
@@ -10,9 +9,10 @@ import {
 } from "react-icons/io5";
 
 import { motion } from "framer-motion";
+import { useTheme } from "@/context/ThemeContext";
 
 export default function Header() {
-  const [isSwitched, setIsSwitched] = useState<boolean>(false);
+  const { theme, changeTheme } = useTheme();
 
   return (
     <header className="py-6">
@@ -40,14 +40,14 @@ export default function Header() {
           </div>
           <button
             className="relative flex items-center h-full px-1 border rounded-full w-28"
-            onClick={() => setIsSwitched((prev) => !prev)}
+            onClick={() => changeTheme(theme === "dark" ? "light" : "dark")}
           >
             <motion.span
               className={cn(
                 "absolute inline-flex items-center justify-center rounded-full size-10 transition-all duration-300"
               )}
               animate={
-                isSwitched
+                theme === "dark"
                   ? {
                       right: "4px",
                       background: "var(--ds-blue-400)",
@@ -58,7 +58,7 @@ export default function Header() {
                     }
               }
             >
-              {isSwitched ? (
+              {theme === "dark" ? (
                 <IoMoonOutline className="size-6" />
               ) : (
                 <IoIosSunny className="size-6" />
