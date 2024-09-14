@@ -1,0 +1,41 @@
+.right{
+    border: solid 2px red;
+    display: block;
+    width: 297px;
+    height: 521px;
+    position: absolute;
+    margin-right: 0;
+}
+.column1,.column2,.column3,.column4{
+ display: block;
+ width: 295px;
+ height: 110px;
+ border: solid 1px red;
+ border-radius:5px ;
+ margin-bottom: 25px;
+
+}
+.column2{
+
+}
+.column3{
+   
+}
+.column4{
+    margin-bottom: 0px;
+}
+.info{
+ display: block;
+ margin-left: 30px;
+ margin-top: 9px;
+}
+
+.left_info,.right_info{
+    float: left;
+}
+.right_info{
+    margin: 25px 0 0 150px;
+}
+#png2,#png3,#png4{
+    margin: -80px 0 0 74px;
+}
