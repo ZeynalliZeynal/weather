@@ -34,8 +34,7 @@ const Map = () => {
 export const LeafletMarker = () => {
   const { place, isLoading } = usePlace();
   const [searchParams, setSearchParams] = useSearchParams();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const map = useMapEvents({
+  useMapEvents({
     click({ latlng }) {
       searchParams.set("latlng", [latlng.lat, latlng.lng].join(","));
       setSearchParams(searchParams);

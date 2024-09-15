@@ -12,6 +12,6 @@ export const getWeather = async (place: string) => {
     const data = await res.json();
     return data.current;
   } catch (err) {
-    throw new Error(err);
+    throw new Error((err as Error).message);
   }
 };
