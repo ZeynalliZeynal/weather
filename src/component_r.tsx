@@ -4,20 +4,16 @@ export default function Component_r() {
   return (
     <>
       <div className="right">
-        <div className="column1">
+        <div className="column">
           <div className="left_info">
             <div>
-              <span className="info" style={{ fontSize: 12, color: "#555" }}>
-                Chaina
-              </span>
+              <span className="city">Chaina</span>
             </div>
             <div>
-              <span className="info">Beijing</span>
+              <span className="country">Beijing</span>
             </div>
             <div>
-              <span className="info" style={{ fontSize: 12 }}>
-                Cloudy
-              </span>
+              <span className="info">Cloudy</span>
             </div>
           </div>
           <div className="right_info">
@@ -25,60 +21,48 @@ export default function Component_r() {
           </div>
         </div>
 
-        <div className="column2">
+        <div className="column">
           <div className="left_info">
             <div>
-              <span className="info" style={{ fontSize: 12, color: "#555" }}>
-                US
-              </span>
+              <span className="city">US</span>
             </div>
             <div>
-              <span className="info">California</span>
+              <span className="country">California</span>
             </div>
             <div>
-              <span className="info" style={{ fontSize: 12 }}>
-                windly
-              </span>
+              <span className="info">windly</span>
             </div>
           </div>
           <div className="right_info">
             <img src="Windy.png" width="50px" height="5px" alt="" id="png2" />
           </div>
         </div>
-        <div className="column3">
+        <div className="column">
           <div className="left_info">
             <div>
-              <span className="info" style={{ fontSize: 12, color: "#555" }}>
-                Dubai
-              </span>
+              <span className="city">Dubai</span>
             </div>
             <div>
-              <span className="info">Arab Emirates</span>
+              <span className="country">Arab Emirates</span>
             </div>
             <div>
-              <span className="info" style={{ fontSize: 12 }}>
-                Mostly Sunny
-              </span>
+              <span className="info">Mostly Sunny</span>
             </div>
           </div>
           <div className="right_info">
             <img src="Sunny.png" width="50px" height="5px" alt="" id="png3" />
           </div>
         </div>
-        <div className="column4">
+        <div className="column">
           <div className="left_info">
             <div>
-              <span className="info" style={{ fontSize: 12, color: "#555" }}>
-                Canada
-              </span>
+              <span className="city">Canada</span>
             </div>
             <div>
-              <span className="info">Charlottetown</span>
+              <span className="country">Charlottetown</span>
             </div>
             <div>
-              <span className="info" style={{ fontSize: 12 }}>
-                Light SnowShower
-              </span>
+              <span className="info">Light SnowShower</span>
             </div>
           </div>
           <div className="right_info">

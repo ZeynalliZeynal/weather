@@ -2,8 +2,12 @@ import { cn } from "@/lib/utils";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { FaCloudSun, FaCloudSunRain } from "react-icons/fa6";
+import RainChart from "./RainChart";
+import { useWeather } from "@/features/useWeatherInfo";
 
 export default function HomeTop() {
+  const { weather, isLoading } = useWeather();
+
   const [searchParams, setSearchParams] = useSearchParams();
 
   const handleTabs = (value: string) => {
@@ -13,8 +17,9 @@ export default function HomeTop() {
 
   useEffect(() => {
     searchParams.set("range", "today");
+    searchParams.set("place", "Baku");
     setSearchParams(searchParams);
-  }, []);
+  }, [searchParams, setSearchParams]);
 
   return (
     <section>
@@ -60,46 +65,48 @@ export default function HomeTop() {
               </button>
             </div>
             <div className="flex gap-10">
-              <div className="flex flex-col rounded-xl border overflow-hidden h-auto">
-                <div className="flex items-center justify-between p-4 border-b bg-blue-100">
-                  <span>Friday</span>
-                  <span>
-                    {new Intl.DateTimeFormat("en", {
-                      timeStyle: "short",
-                    }).format(new Date())}
-                  </span>
-                </div>
-                <div className="flex flex-col p-4 bg-blue-200 grow gap-3">
-                  <div className="grid grid-cols-2 items-center">
-                    <div className="text-3xl font-medium">16&deg;</div>
-                    <FaCloudSun className="size-16 text-amber-900 place-self-end" />
+              {isLoading ? (
+                "Loading"
+              ) : (
+                <div className="flex flex-col rounded-xl border overflow-hidden h-auto">
+                  <div className="flex items-center justify-between p-4 border-b bg-blue-400">
+                    <span>Friday</span>
+                    <span>{weather?.last_updated.split(" ")[1]}</span>
                   </div>
-                  <div className="grid grid-cols-2 text-xs gap-6">
-                    <ul className="flex flex-col gap-2">
-                      <li>
-                        Real Feel <b>18&deg;</b>
-                      </li>
-                      <li>
-                        Wind N-E. <b>6-7km/h</b>
-                      </li>
-                      <li>
-                        Pressure <b>100MB</b>
-                      </li>
-                      <li>
-                        Humidity <b>51%</b>
-                      </li>
-                    </ul>
-                    <ul className="flex flex-col gap-2 justify-center text-end">
-                      <li>
-                        Sunrise <b>5:30AM</b>
-                      </li>
-                      <li>
-                        Sunset <b>6:45</b>
-                      </li>
-                    </ul>
+                  <div className="flex flex-col p-4 bg-blue-300 grow gap-3">
+                    <div className="grid grid-cols-2 items-center">
+                      <div className="text-3xl font-medium">
+                        {weather?.temp_c}&deg;
+                      </div>
+                      <FaCloudSun className="size-16 text-amber-900 place-self-end" />
+                    </div>
+                    <div className="grid grid-cols-2 text-xs gap-6">
+                      <ul className="flex flex-col gap-2">
+                        <li>
+                          Real Feel <b>{weather?.feelslike_c}&deg;</b>
+                        </li>
+                        <li>
+                          Wind N-E. <b>{weather?.wind_kph}</b>
+                        </li>
+                        <li>
+                          Pressure <b>{weather?.pressure_mb}</b>
+                        </li>
+                        <li>
+                          Humidity <b>{weather?.humidity}%</b>
+                        </li>
+                      </ul>
+                      {/* <ul className="flex flex-col gap-2 justify-center text-end">
+                        <li>
+                          Sunrise <b>5:30AM</b>
+                        </li>
+                        <li>
+                          Sunset <b>6:45</b>
+                        </li>
+                      </ul> */}
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
               <ul className="flex justify-between grow">
                 <li className="flex flex-col border rounded-3xl bg-gray-alpha-100 w-24 text-center">
                   <span className="uppercase border-b p-4">sat</span>
@@ -148,6 +155,7 @@ export default function HomeTop() {
           </div>
           <div className="flex flex-col gap-6">
             <h4 className="text-xl font-medium">Chance Of Rain</h4>
+            <RainChart />
           </div>
         </div>
       </div>
